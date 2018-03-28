@@ -21,8 +21,8 @@ array_insert($GLOBALS['BE_MOD']['content'], 100, array
  */
 array_insert($GLOBALS['TL_CTE'], 1, array
 (
-	'includes' 	=> array
-				(
-
-				)
+	'includes' => array
+	(
+		'facebookwall_viewer'    => 'FacebookwallViewer'
+	)
 ));

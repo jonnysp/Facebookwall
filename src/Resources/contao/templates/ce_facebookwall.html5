@@ -1,0 +1,52 @@
+<div class="<?= $this->class ?>">
+
+	<?php foreach ($this->feed->data as $key => $fb_element): ?>
+
+		<?php if ($fb_element->from->id == $this->user->id): ?>
+
+			<div class="media" id="<?=$fb_element->id ?>">
+
+				<a class="d-flex mr-3" target="_blank" href="//www.facebook.com/profile.php?id=<?= $this->user->id ?>" >
+					<img class="media-object" src="//graph.facebook.com/<?= $this->user->id ?>/picture?type=square" />
+				</a>
+
+				<div class="media-body">
+
+					<?php if ($fb_element->picture): ?>
+						<a style="max-width:150px; margin:0 0 10px 10px;" class="img-thumbnail float-right" target="_blank" href="<?= $fb_element->link;?>">
+							<img class="img-fluid" id="<?= $fb_element->object_id;?>" src="<?= $fb_element->picture;?>" />
+						</a>
+					<?php endif; ?>
+
+					<h5 class="media-heading">
+						<a target="_blank" href="//www.facebook.com/profile.php?id=<?= $this->user->id ?>"><?= $this->user->name ?></a>
+						<?php if ($fb_element->name): ?>
+						 - <a href="<?=$fb_element->link ?>" target="_blank"><?=$fb_element->name ?></a>
+						<?php endif; ?>
+					</h5>	
+
+					<?php if ($fb_element->message): ?>
+						<?= $this->wall->modText($fb_element->message);?><br>
+					<?php endif; ?>
+
+					<?php if ($fb_element->description): ?>
+						<?= $this->wall->modText($fb_element->description);?><br>
+					<?php endif; ?>
+
+					<?php if ($fb_element->story): ?>
+						<?= $this->wall->modText($fb_element->story);?><br>
+					<?php endif; ?>
+
+		
+
+
+				</div>
+
+			</div>
+		<hr>
+
+		<?php endif; ?>
+
+	<?php endforeach; ?>
+
+</div>	

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Table tl_recipes
+ * Table tl_facebookwall
  */
 $GLOBALS['TL_DCA']['tl_facebookwall'] = array
 (
