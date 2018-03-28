@@ -11,11 +11,11 @@ class FacebookwallViewer extends \ContentElement
 		{
 			$objWall = \FacebookwallModel::findByPK($this->facebookwall);
 			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->title =  $objWall->title . " - " . $objWall->count . " Items";
 			return $objTemplate->parse();	
 		}
 		return parent::generate();
 	}//end generate
-
 
 
 	protected function compile(){
@@ -35,11 +35,6 @@ class FacebookwallViewer extends \ContentElement
 		$this->Template->user = json_decode(file_get_contents($user_link));
 		$this->Template->feed = json_decode(file_get_contents($feed_link));
 		
-
 	}//end compile
 
-
-
-
 }//end class
-
