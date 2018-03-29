@@ -26,19 +26,16 @@
 					</h5>	
 
 					<?php if ($fb_element->message): ?>
-						<?= $this->wall->modText($fb_element->message);?><br>
+						<p><?= $this->wall->modText($fb_element->message);?></p>
 					<?php endif; ?>
 
 					<?php if ($fb_element->description): ?>
-						<?= $this->wall->modText($fb_element->description);?><br>
+						<p><?= $this->wall->modText($fb_element->description);?></p>
 					<?php endif; ?>
 
 					<?php if ($fb_element->story): ?>
-						<?= $this->wall->modText($fb_element->story);?><br>
+						<p><?= $this->wall->modText($fb_element->story);?></p>
 					<?php endif; ?>
-
-		
-
 
 				</div>
 

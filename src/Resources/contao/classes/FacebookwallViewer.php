@@ -15,12 +15,11 @@ class FacebookwallViewer extends \ContentElement
 			return $objTemplate->parse();	
 		}
 		return parent::generate();
+		
 	}//end generate
 
 
 	protected function compile(){
-		global $objPage;
-		$this->loadLanguageFile('tl_facebookwall');
 
 		$objWall = \FacebookwallModel::findByPK($this->facebookwall);
 		$access_token = $objWall->appid.'|'.$objWall->secret;

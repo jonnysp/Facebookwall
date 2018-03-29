@@ -7,18 +7,19 @@ class FacebookwallModel extends \Model
 
     public function escapeTags($value='')
 	{
-		$val =  preg_replace('/</i', '&lt;', $value);
-		return  preg_replace('/>/i', '&gt;', $val);
+		$val =  preg_replace('/</ix', '&lt;', $value);
+		return  preg_replace('/>/ix', '&gt;', $val);
 	}
 
 	public function nl2br($value="")
 	{
-		return  preg_replace('/(\r\n)|(\n\r)|\r|\n/i', '<br>', $value);
-	}
+		return  preg_replace('/(\r\n)|(\n\r)|\r|\n/ix', '<br>', $value);
+	}                     
 
 	public function autoLink($value="")
 	{
-		return  preg_replace('/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/i', '<a href="$1" target="_blank">$1</a>', $value);
+		$val = preg_replace('!(http|ftp|https)://[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&amp;:/~+#äöüÄÖÜ]*[\w\-@?^=%&amp;/~+#])?!i', '<a href="$0" target="_blank">$0</a>', $value);
+		return preg_replace('/(\B\#)([0-9a-zA-ZÄäÖöÜü_\-+]+\b)(?!;)/ix', '<a href="https://www.facebook.com/hashtag/$2" target="_blank">$0</a>', $val);
 	}
 
 	public function modText($value="")
