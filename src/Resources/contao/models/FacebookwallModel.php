@@ -18,8 +18,8 @@ class FacebookwallModel extends \Model
 
 	public function autoLink($value="")
 	{
-		$val = preg_replace('!(http|ftp|https)://[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&amp;:/~+#äöüÄÖÜ]*[\w\-@?^=%&amp;/~+#])?!i', '<a href="$0" target="_blank">$0</a>', $value);
-		return preg_replace('/(\B\#)([0-9a-zA-ZÄäÖöÜü_\-+]+\b)(?!;)/ix', '<a href="https://www.facebook.com/hashtag/$2" target="_blank">$0</a>', $val);
+		$val = preg_replace('!(http|ftp|https)://[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&amp;:/~+#ÄäÖöÜüß]*[\w\-@?^=%&amp;/~+#])?!i', '<a href="$0" target="_blank">$0</a>', $value);
+		return preg_replace('/(\B\#)([0-9a-zA-ZÄäÖöÜüß_\-+]+\b)(?!;)/u', '<a href="https://www.facebook.com/hashtag/$2" target="_blank">$0</a>', $val);
 	}
 
 	public function modText($value="")
