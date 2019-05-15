@@ -18,6 +18,16 @@ class FacebookwallViewer extends \ContentElement
 		
 	}//end generate
 
+	protected function get_data($url) {
+		$ch = curl_init();
+		$timeout = 5;
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+	}//end get_data
 
 	protected function compile(){
 
@@ -31,8 +41,8 @@ class FacebookwallViewer extends \ContentElement
 		$feed_link = "https://graph.facebook.com/{$objWall->userid}/feed?access_token={$access_token}&fields={$feedfields}&limit={$objWall->count}";
 
 		$this->Template->wall = $objWall;
-		$this->Template->user = json_decode(file_get_contents($user_link));
-		$this->Template->feed = json_decode(file_get_contents($feed_link));
+		$this->Template->user = json_decode($this->get_data($user_link));
+		$this->Template->feed = json_decode($this->get_data($feed_link));
 		
 	}//end compile
 
